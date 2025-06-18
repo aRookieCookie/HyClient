@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" class="bg-gray-950 text-white">
 <head>
+  <link rel="icon" href="logo.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HyClient – Skyblock Hypixel Client</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Slideshow styles */
+    .slideshow-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+  </style>
 </head>
-<body class="font-sans">
-  <!-- Hero Section -->
-  <section class="text-center py-20 bg-gradient-to-b from-gray-900 to-black">
-    <h1 class="text-5xl font-bold mb-4">HyClient</h1>
-    <p class="text-lg text-gray-400 mb-6">A Custom Skyblock Hypixel Client</p>
-    <a href="#download" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl text-white text-lg transition">
-      Download Now
-    </a>
+<body class="font-sans overflow-x-hidden">
+
+  <!-- Hero Section with Slideshow -->
+  <section class="relative h-screen flex flex-col justify-center items-center text-center bg-black">
+    <div id="slideshow" class="slideshow-bg"></div>
+    <div class="hero-content px-4">
+      <img src="logoname.png" alt="HyClient Logo" class="mx-auto max-w-xs mb-6">
+      <a href="#download" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl text-white text-lg transition">
+        Download Now
+      </a>
+    </div>
   </section>
 
   <!-- Features -->
@@ -35,8 +56,14 @@
     </div>
   </section>
 
+  <!-- Poster Section -->
+  <section class="py-20 bg-gray-900 px-4 text-center">
+    <h2 class="text-3xl font-semibold mb-6">A Glimpse at HyClient</h2>
+    <img src="poster.png" alt="HyClient Poster" class="mx-auto rounded-xl shadow-lg max-w-3xl">
+  </section>
+
   <!-- Download Section -->
-  <section id="download" class="py-20 bg-gray-900 px-4 text-center">
+  <section id="download" class="py-20 px-4 text-center">
     <h2 class="text-3xl font-semibold mb-6">Download HyClient</h2>
     <p class="text-gray-400 mb-8">Choose your platform and get started instantly.</p>
     <div class="flex flex-col md:flex-row justify-center gap-6">
@@ -48,7 +75,23 @@
 
   <!-- Footer -->
   <footer class="py-8 text-center text-gray-500 text-sm">
+    <img src="logo.png" alt="Small Logo" class="inline w-6 h-6 mr-2 align-middle">
     &copy; 2025 HyClient. Not affiliated with Mojang or Hypixel.
   </footer>
+
+  <!-- Slideshow Script -->
+  <script>
+    const images = ['wallpaper1.png', 'wallpaper2.png', 'wallpaper3.png'];
+    let current = 0;
+    const slideshow = document.getElementById('slideshow');
+
+    function updateSlideshow() {
+      slideshow.style.backgroundImage = `url('${images[current]}')`;
+      current = (current + 1) % images.length;
+    }
+
+    updateSlideshow();
+    setInterval(updateSlideshow, 5000); // change every 5 seconds
+  </script>
 </body>
 </html>
